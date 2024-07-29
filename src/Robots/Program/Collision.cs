@@ -2,22 +2,6 @@ using Rhino.Geometry;
 
 namespace Robots;
 
-#if NETSTANDARD2_0
-public class Collision
-{
-    public bool HasCollision => throw NotImplemented();
-    public Mesh[] Meshes => throw NotImplemented();
-    public SystemTarget CollisionTarget => throw NotImplemented();
-
-    internal Collision(Program program, IEnumerable<int> first, IEnumerable<int> second, Mesh? environment, int environmentPlane, double linearStep, double angularStep)
-    {
-        throw NotImplemented();
-    }
-
-    static NotImplementedException NotImplemented() => new(" Collisions not implemented in standalone.");
-}
-
-#elif NET48
 using static System.Math;
 
 public class Collision
@@ -121,5 +105,3 @@ public class Collision
         });
     }
 }
-
-#endif
