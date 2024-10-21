@@ -7,7 +7,7 @@ public class SystemAbb : IndustrialSystem
     internal SystemAbb(SystemAttributes attributes, List<MechanicalGroup> mechanicalGroups)
         : base(attributes, mechanicalGroups)
     {
-        Remote = new RemoteAbb();
+       // Remote = new RemoteAbb();
     }
 
     public static Plane QuaternionToPlane(double x, double y, double z, double q1, double q2, double q3, double q4)

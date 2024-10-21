@@ -8,7 +8,7 @@ public class SystemUR : CobotSystem
     internal SystemUR(SystemAttributes attributes, RobotUR robot)
         : base(attributes, robot)
     {
-        Remote = new RemoteUR();
+        // Remote = new RemoteUR();
     }
 
     public override Manufacturers Manufacturer => Manufacturers.UR;

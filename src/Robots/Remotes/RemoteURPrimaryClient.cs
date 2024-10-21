@@ -1,3 +1,4 @@
+/*
 using System.Net.Sockets;
 using System.Text;
 
@@ -56,3 +57,4 @@ class RemoteURSecondaryClient(string ip, Action<string> log) : IRemoteURBackend
 
     void AddLog(string message) => _log(message);
 }
+*/

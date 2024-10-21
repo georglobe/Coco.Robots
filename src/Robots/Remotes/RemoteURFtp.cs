@@ -1,3 +1,4 @@
+/*
 using System.Net.Sockets;
 using System.Text;
 
@@ -74,3 +75,4 @@ class RemoteURFtp(User user, Action<string> log) : IRemoteURBackend
 
     void AddLog(string message) => _log(message);
 }
+*/

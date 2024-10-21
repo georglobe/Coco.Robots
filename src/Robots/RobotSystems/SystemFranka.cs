@@ -7,7 +7,7 @@ public class SystemFranka : CobotSystem
     internal SystemFranka(SystemAttributes attributes, RobotFranka robot)
         : base(attributes, robot)
     {
-        Remote = new RemoteFranka();
+       // Remote = new RemoteFranka();
     }
 
     public override int RobotJointCount => 7;
