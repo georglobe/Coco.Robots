@@ -1,3 +1,4 @@
+/*
 using Renci.SshNet;
 
 namespace Robots;
@@ -34,3 +35,4 @@ class Ftp
         client.Disconnect();
     }
 }
+*/

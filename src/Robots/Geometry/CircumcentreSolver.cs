@@ -1,7 +1,7 @@
+namespace Robots.Geometry;
+
 using Rhino.Geometry;
 using static System.Math;
-
-namespace Robots.Geometry;
 
 /// <summary>
 /// Code lifted from http://stackoverflow.com/questions/13600739/calculate-centre-of-sphere-whose-surface-contains-4-points-c

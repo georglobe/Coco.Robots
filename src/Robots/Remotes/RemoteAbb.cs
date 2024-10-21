@@ -1,3 +1,4 @@
+/*
 namespace Robots;
 
 using ABB.Robotics.Controllers;
@@ -183,3 +184,4 @@ public class RemoteAbb : IRemote
         return target;
     }
 }
+*/
