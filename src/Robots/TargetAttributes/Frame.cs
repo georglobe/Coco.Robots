@@ -2,6 +2,7 @@ using Rhino.Geometry;
 
 namespace Robots;
 
+[Serializable]
 public class Frame : TargetAttribute, IEquatable<Frame>
 {
     public static Frame Default { get; } = new(Plane.WorldXY, -1, -1, "DefaultFrame");

@@ -1,5 +1,6 @@
 namespace Robots.Commands;
 
+[Serializable]
 public class Message(string message) : Command
 {
     readonly string _message = message;

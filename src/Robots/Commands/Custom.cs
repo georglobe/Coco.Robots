@@ -1,5 +1,6 @@
-﻿namespace Robots.Commands;
+namespace Robots.Commands;
 
+[Serializable]
 public class Custom : Command
 {
     readonly Dictionary<Manufacturers, string> _customCommands = [];

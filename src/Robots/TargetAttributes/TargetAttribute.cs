@@ -1,3 +1,5 @@
+using System.Runtime.Serialization;
+
 namespace Robots;
 
 public abstract class TargetAttribute
@@ -8,6 +10,11 @@ public abstract class TargetAttribute
     {
         if (name is not null)
             Name = name;
+    }
+
+    protected TargetAttribute(SerializationInfo info, StreamingContext context)
+    {
+        _name = info.GetString("Name");
     }
 
     /// <summary>

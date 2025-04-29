@@ -8,21 +8,21 @@ class SimulationForm : ComponentForm
 {
     readonly Simulation _component;
 
-    internal readonly CheckBox Play;
+    internal readonly Eto.Forms.CheckBox Play;
 
     public SimulationForm(Simulation component)
     {
         _component = component;
 
         Title = "Playback";
-        MinimumSize = new Size(0, 200);
+        MinimumSize = new Eto.Drawing.Size(0, 200);
 
-        Padding = new Padding(5);
+        Padding = new Eto.Drawing.Padding(5);
 
-        var font = new Font(FontFamilies.Sans, 14, FontStyle.None, FontDecoration.None);
-        var size = new Size(35, 35);
+        var font = new Eto.Drawing.Font(FontFamilies.Sans, 14, Eto.Drawing.FontStyle.None, FontDecoration.None);
+        var size = new Eto.Drawing.Size(35, 35);
 
-        Play = new CheckBox
+        Play = new Eto.Forms.CheckBox
         {
             Text = "\u25B6",
             Size = size,
@@ -33,7 +33,7 @@ class SimulationForm : ComponentForm
 
         Play.CheckedChanged += (s, e) => component.TogglePlay();
 
-        var stop = new Button
+        var stop = new Eto.Forms.Button
         {
             Text = "\u25FC",
             Size = size,
@@ -45,8 +45,8 @@ class SimulationForm : ComponentForm
 
         var slider = new Slider
         {
-            Orientation = Orientation.Vertical,
-            Size = new Size(-1, -1),
+            Orientation = Eto.Forms.Orientation.Vertical,
+            Size = new Eto.Drawing.Size(-1, -1),
             TabIndex = 2,
             MaxValue = 400,
             MinValue = -200,
@@ -57,7 +57,7 @@ class SimulationForm : ComponentForm
 
         slider.ValueChanged += (s, e) => component.Speed = (double)slider.Value / 100.0; ;
 
-        var speedLabel = new Label
+        var speedLabel = new Eto.Forms.Label
         {
             Text = "100%",
             VerticalAlignment = VerticalAlignment.Center,
@@ -65,7 +65,7 @@ class SimulationForm : ComponentForm
 
         var layout = new DynamicLayout();
         layout.BeginVertical();
-        layout.AddSeparateRow(padding: new Padding(10), spacing: new Size(10, 0), controls: [Play, stop]);
+        layout.AddSeparateRow(padding: new Eto.Drawing.Padding(10), spacing: new Eto.Drawing.Size(10, 0), controls: [Play, stop]);
         layout.BeginGroup("Speed");
         layout.AddSeparateRow(slider, speedLabel);
         layout.EndGroup();

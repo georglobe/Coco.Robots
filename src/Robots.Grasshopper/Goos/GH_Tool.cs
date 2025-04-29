@@ -1,3 +1,4 @@
+using GH_IO.Serialization;
 using Grasshopper.Kernel.Types;
 
 namespace Robots.Grasshopper;
@@ -39,5 +40,15 @@ public class GH_Tool : GH_Goo<Tool>
         }
 
         return false;
+    }
+
+    public override bool Write(GH_IWriter writer)
+    {
+
+        return base.Write(writer);
+    }
+    public override bool Read(GH_IReader reader)
+    {
+        return base.Read(reader);
     }
 }

@@ -1,20 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <AssemblyTitle>$(Product) Grasshopper</AssemblyTitle>
-
+    
+    <LanguageVersion>12.0</LanguageVersion>
+    <UseWindowsForms>true</UseWindowsForms>
+    <NoWarn>$(NoWarn);SYSLIB0011</NoWarn>
+    
     <PackageId>Robots.Rhino</PackageId>
     <PackageIcon>iconRhino128.png</PackageIcon>
     <Description>$(Description) This package is for development of Rhino and Grasshopper plug-ins.</Description>
     <PackageTags>$(PackageTags);Rhino;Grasshopper</PackageTags>
-    <Rhino>7</Rhino>
+    <Rhino>8</Rhino>
   </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Windows.Forms" />
-    <PackageReference Include="Grasshopper" Version="7.0.20314.3001" ExcludeAssets="runtime" />
     <ProjectReference Include="..\Robots\Robots.csproj" PrivateAssets="All" />
   </ItemGroup>
 
@@ -24,6 +27,11 @@
     <None Include="$(RootDir)build\Assets\iconRobot.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     <None Include="Build\Robots.Rhino.targets" Pack="true" PackagePath="buildTransitive" />
     <None Include="$(TargetDir)$(Product).dll" Pack="true" PackagePath="lib\net48" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grasshopper" Version="8.16.25042.13001" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.2" />
   </ItemGroup>
 
   <PropertyGroup Condition="$([MSBuild]::IsOSPlatform(Windows)) and $(Configuration) == 'Debug'">

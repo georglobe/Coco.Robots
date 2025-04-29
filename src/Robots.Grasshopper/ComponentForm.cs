@@ -1,10 +1,10 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using Eto.Drawing;
 using Eto.Forms;
 
 namespace Robots.Grasshopper;
 
-class ComponentForm : Form
+class ComponentForm : Eto.Forms.Form
 {
     public ComponentForm()
     {
@@ -33,7 +33,7 @@ class ComponentForm : Form
         var mousePos = Mouse.Position;
         int x = (int)mousePos.X + 20;
         int y = (int)mousePos.Y - MinimumSize.Height / 2;
-        Location = new Point(x, y);
+        Location = new Eto.Drawing.Point(x, y);
     }
 
     protected override void OnClosing(CancelEventArgs e)

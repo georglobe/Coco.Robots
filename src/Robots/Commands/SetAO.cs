@@ -1,5 +1,6 @@
 namespace Robots.Commands;
 
+[Serializable]
 public class SetAO(int ao, double value) : Command
 {
     public int AO { get; } = ao;

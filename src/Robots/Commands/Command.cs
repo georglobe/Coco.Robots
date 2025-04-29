@@ -1,5 +1,6 @@
 namespace Robots;
 
+[Serializable]
 public abstract class Command(string? name = null) : TargetAttribute(name)
 {
     public static Command Default { get; } = new Commands.Custom("DefaultCommand");

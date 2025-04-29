@@ -2,7 +2,13 @@ using static System.Math;
 
 namespace Robots;
 
-public class Speed(double translation = 100, double rotationSpeed = PI, double translationExternal = 5000, double rotationExternal = PI * 6, string? name = null)
+[Serializable]
+public class Speed(
+    double translation = 100,
+    double rotationSpeed = PI,
+    double translationExternal = 5000,
+    double rotationExternal = PI * 6,
+    string? name = null)
     : TargetAttribute(name), IEquatable<Speed>
 {
     public static Speed Default { get; } = new(name: "DefaultSpeed");

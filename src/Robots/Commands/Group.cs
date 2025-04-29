@@ -1,7 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 
 namespace Robots.Commands;
 
+[Serializable]
 public class Group : Command, IList<Command>
 {
     readonly List<Command> _commandList = [];

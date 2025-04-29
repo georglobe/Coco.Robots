@@ -1,5 +1,6 @@
 namespace Robots.Commands;
 
+[Serializable]
 public class WaitDI(int di, bool value = true) : Command
 {
     public int DI { get; } = di;

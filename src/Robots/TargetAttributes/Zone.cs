@@ -2,6 +2,7 @@ using static Robots.Util;
 
 namespace Robots;
 
+[Serializable]
 public class Zone(double distance, double? rotation = null, double? rotationExternal = null, string? name = null)
     : TargetAttribute(name), IEquatable<Zone>
 {

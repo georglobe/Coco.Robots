@@ -1,5 +1,6 @@
 namespace Robots.Commands;
 
+[Serializable]
 public class SetDO(int @do, bool value) : Command
 {
     public int DO { get; } = @do;

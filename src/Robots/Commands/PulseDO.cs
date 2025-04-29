@@ -1,5 +1,6 @@
 namespace Robots.Commands;
 
+[Serializable]
 public class PulseDO(int @do, double length = 0.2) : Command
 {
     public int DO { get; } = @do;

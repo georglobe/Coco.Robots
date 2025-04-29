@@ -1,14 +1,20 @@
 using Rhino.Geometry;
+using Rhino.PlugIns;
+using System.Runtime.Intrinsics.Arm;
+using System.Runtime.Serialization;
 
 namespace Robots;
 
-public class Tool : TargetAttribute
+public class Tool : TargetAttribute, ISerializable
 {
     public static Tool Default { get; } = new(Plane.WorldXY, "DefaultTool");
 
     public Plane Tcp { get; }
+
     public double Weight { get; }
+
     public Point3d Centroid { get; }
+
     public Mesh Mesh { get; }
 
     /// <summary>
@@ -21,7 +27,15 @@ public class Tool : TargetAttribute
     /// </summary>
     public int? Number { get; }
 
-    public Tool(Plane tcp, string name = "DefaultTool", double weight = 0, Point3d? centroid = null, Mesh? mesh = null, IList<Plane>? calibrationPlanes = null, bool useController = false, int? number = null)
+    public Tool(
+        Plane tcp,
+        string name = "DefaultTool",
+        double weight = 0,
+        Point3d? centroid = null,
+        Mesh? mesh = null,
+        IList<Plane>? calibrationPlanes = null,
+        bool useController = false,
+        int? number = null)
         : base(name)
     {
         Weight = weight;
@@ -47,6 +61,25 @@ public class Tool : TargetAttribute
         }
     }
 
+    protected Tool(SerializationInfo info, StreamingContext context)
+        : base(info, context)
+    {
+        if (Name is null)
+            throw new ArgumentNullException($"Could not load Tool '{Name}'");
+
+        var tool = FileIO.LoadTool(_name);
+
+        // TODO - also serialize for Tools that are not defined in XML
+        Tcp = tool.Tcp;
+        Weight = tool.Weight;
+        Centroid = tool.Centroid;
+        Mesh = tool.Mesh;
+        UseController = tool.UseController;
+        Number = tool.Number;
+
+        // Guid = (Guid)info.GetValue("Guid", typeof(Guid));
+    }
+
     static Point3d FourPointCalibration(IList<Plane> calibrationPlanes)
     {
         var p = calibrationPlanes;
@@ -64,4 +97,10 @@ public class Tool : TargetAttribute
     }
 
     public override string ToString() => $"Tool ({Name})";
+
+    public void GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        //base.GetObjectData(info, context);
+        info.AddValue("Name", Name);
+    }
 }

@@ -1,5 +1,6 @@
 namespace Robots.Commands;
 
+[Serializable]
 public class Stop : Command
 {
     public Stop() { }

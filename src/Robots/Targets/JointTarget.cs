@@ -3,6 +3,7 @@ using static Robots.Util;
 
 namespace Robots;
 
+[Serializable]
 public class JointTarget : Target
 {
     public double[] Joints { get; set; }

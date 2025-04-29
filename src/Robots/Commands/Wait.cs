@@ -1,5 +1,6 @@
 namespace Robots.Commands;
 
+[Serializable]
 public class Wait(double seconds) : Command
 {
     public double Seconds { get; } = seconds;

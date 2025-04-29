@@ -2,6 +2,7 @@ using static Robots.Util;
 
 namespace Robots;
 
+[Serializable]
 public abstract class Target(Tool? tool, Speed? speed, Zone? zone, Command? command, Frame? frame, IEnumerable<double>? external) : IToolpath
 {
     public static Target Default { get; } = new JointTarget([0, HalfPI, 0, 0, 0, 0]);

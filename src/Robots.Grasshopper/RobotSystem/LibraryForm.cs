@@ -14,7 +14,7 @@ class LibraryCell : StackLayout
     {
         Padding = 5;
         Spacing = 0;
-        Orientation = Orientation.Horizontal;
+        Orientation = Eto.Forms.Orientation.Horizontal;
         VerticalContentAlignment = VerticalAlignment.Center;
 
         Items.Add(new StackLayoutItem(NewLabel(i => i.Name), true));
@@ -29,9 +29,9 @@ class LibraryForm : ComponentForm
 
     const string _helpUrl = "https://github.com/visose/Robots/wiki/Robot-libraries";
 
-    public static Label NewLabel(Expression<Func<LibraryItem, string>> bindText, TextAlignment align = TextAlignment.Left, Font? font = null)
+    public static Eto.Forms.Label NewLabel(Expression<Func<LibraryItem, string>> bindText, TextAlignment align = TextAlignment.Left, Eto.Drawing.Font font = null)
     {
-        var label = new Label
+        var label = new Eto.Forms.Label
         {
             TextAlignment = align,
             Font = font ?? EtoFonts.NormalFont
@@ -63,10 +63,10 @@ class LibraryForm : ComponentForm
 
         Title = "Robot libraries";
         BackgroundColor = Colors.Transparent;
-        MinimumSize = new Size(600, 300);
+        MinimumSize = new Eto.Drawing.Size(600, 300);
         Content = new StackLayout
         {
-            Orientation = Orientation.Horizontal,
+            Orientation = Eto.Forms.Orientation.Horizontal,
             Spacing = 20,
             Padding = 10,
             Items =
@@ -88,7 +88,7 @@ class LibraryForm : ComponentForm
             Directory = settings.LocalLibraryPath,
         };
 
-        if (dialog.ShowDialog(this) != DialogResult.Ok)
+        if (dialog.ShowDialog(this) != Eto.Forms.DialogResult.Ok)
             return;
 
         Settings.Save(settings with { LocalLibraryPath = dialog.Directory });
@@ -104,7 +104,7 @@ class LibraryForm : ComponentForm
         catch (Exception e)
         {
             string rateLimit = e.Message.Contains(": 403") ? " It is possible you reached your rate limit, please wait one hour for the limit to reset." : "";
-            MessageBox.Show(this, $"Error refreshing list of libraries.{rateLimit}\n\n{e.Message}", MessageBoxType.Error);
+            Eto.Forms.MessageBox.Show(this, $"Error refreshing list of libraries.{rateLimit}\n\n{e.Message}", MessageBoxType.Error);
             return;
         }
 
@@ -146,7 +146,7 @@ class LibraryForm : ComponentForm
         }
         catch (Exception e)
         {
-            MessageBox.Show(this, $"{action} error on {item.Name}.\n\n{e.Message}", MessageBoxType.Error);
+            Eto.Forms.MessageBox.Show(this, $"{action} error on {item.Name}.\n\n{e.Message}", MessageBoxType.Error);
         }
 
         _detailView.UpdateBindings(BindingUpdateMode.Destination);
@@ -163,7 +163,7 @@ class LibraryForm : ComponentForm
 
     static GridView Grid() => new()
     {
-        Size = new Size(300, 300),
+        Size = new Eto.Drawing.Size(300, 300),
         Border = BorderType.None,
         GridLines = GridLines.Horizontal,
         ShowHeader = false,
@@ -182,7 +182,7 @@ class LibraryForm : ComponentForm
     StackLayout ListView(GridView grid) => new()
     {
         Spacing = 10,
-        HorizontalContentAlignment = HorizontalAlignment.Stretch,
+        HorizontalContentAlignment = Eto.Forms.HorizontalAlignment.Stretch,
         Items =
         {
             new StackLayoutItem(new Scrollable
@@ -194,7 +194,7 @@ class LibraryForm : ComponentForm
             }, true),
             new StackLayout
             {
-                Orientation = Orientation.Horizontal,
+                Orientation = Eto.Forms.Orientation.Horizontal,
                 VerticalContentAlignment = VerticalAlignment.Bottom,
                 Items =
                 {
@@ -237,7 +237,7 @@ class LibraryForm : ComponentForm
     StackLayout NewDetailButton()
     {
         var detailButton = NewAsyncButton(DownloadAsync);
-        var button = (Button)detailButton.Items[0].Control;
+        var button = (Eto.Forms.Button)detailButton.Items[0].Control;
         button.TextBinding.BindDataContext((LibraryItem i) => ItemActions(i));
         button.BindDataContext(s => s.Visible, (LibraryItem i) => ItemActions(i) != "");
         return detailButton;
@@ -245,7 +245,7 @@ class LibraryForm : ComponentForm
 
     static StackLayout NewAsyncButton(Func<Task> actionAsync, string? label = null, bool runOnce = false)
     {
-        Button button = new()
+        Eto.Forms.Button button = new()
         {
             Text = label
         };
@@ -263,7 +263,7 @@ class LibraryForm : ComponentForm
         return new StackLayout
         {
             Spacing = 5,
-            Orientation = Orientation.Horizontal,
+            Orientation = Eto.Forms.Orientation.Horizontal,
             VerticalContentAlignment = VerticalAlignment.Center,
             Items =
             {

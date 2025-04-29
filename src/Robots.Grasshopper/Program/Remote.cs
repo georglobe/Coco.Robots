@@ -1,7 +1,7 @@
 using Grasshopper;
 
 namespace Robots.Grasshopper;
-
+/*
 public class Remote : GH_Component
 {
     public Remote() : base("Remote connection", "Remote", "Upload and run programs to UR or ABB controllers through a network. For ABB controllers you must install the 'ABB Robot Communication Runtime'.", "Robots", "Components") { }
@@ -59,3 +59,4 @@ public class Remote : GH_Component
         DA.SetDataList(0, remote.Log);
     }
 }
+*/
